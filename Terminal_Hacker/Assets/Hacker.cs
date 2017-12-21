@@ -38,9 +38,9 @@ public class Hacker : MonoBehaviour {
         else if (currentScreen == Screen.Password) {
             CheckPassword(input);
         }
-        else if (currentScreen == Screen.Win) {
-            Terminal.WriteLine("Congratulations!! You are the baddest hacker in all the land and you have received a prize of 10 Bitcoins!!");
-        }
+        //else if (currentScreen == Screen.Win) {
+        //    Terminal.WriteLine("Congratulations!! You are the baddest hacker in all the land and you have received a prize of 10 Bitcoins!!");
+        //}
     }
 
     void RunMainMenu(string input) {
@@ -65,49 +65,54 @@ public class Hacker : MonoBehaviour {
     void StartGame() {
 		currentScreen = Screen.Password;
         Terminal.WriteLine("Alrighty son, you have chosen " + level);
+        Terminal.WriteLine("Please enter your password: ");
 
-        if (level == 1) {
-            ShowGameChallenge(1);
-        }
+        //if (level == 1) {
+        //    ShowGameChallenge(1);
+        //}
 
-        else if (level == 2) {
-            ShowGameChallenge(2);
-        }
+        //else if (level == 2) {
+        //    ShowGameChallenge(2);
+        //}
     }
 
-    void ShowGameChallenge(int level) {
-        if (level == 1) {
-            Terminal.WriteLine("What is the anagram of \'ram?\'");
-            LevelOne(input);
-        }
+    //void ShowGameChallenge(int level) {
+    //    if (level == 1) {
+    //        Terminal.WriteLine("What is the anagram of \'ram?\'");
+    //        LevelOne(input);
+    //    }
 
-        if (level == 2) {
-            Terminal.WriteLine("Alright big boy, this one is a bit of a toughie. What is the anagram for: \'ghariltmo\'");
-            LevelTwo(input);
-        }
-    }
+    //    if (level == 2) {
+    //        Terminal.WriteLine("Alright big boy, this one is a bit of a toughie. What is the anagram for: \'ghariltmo\'");
+    //        LevelTwo(input);
+    //    }
+    //}
 
-    void LevelOne(string input) {
-        if (input.ToLower() == "ram") {
-            currentScreen = Screen.Win;
-        }
-        else {
-            Terminal.WriteLine(retry);
-        }
-    }
+    //void LevelOne(string input) {
+    //    if (input.ToLower() == "ram") {
+    //        currentScreen = Screen.Win;
+    //    }
+    //    else {
+    //        Terminal.WriteLine(retry);
+    //    }
+    //}
 
-    void LevelTwo(string input) {
-        if (input.ToLower() == "algorithm") {
-            currentScreen = Screen.Win;
-        }
-        else {
-            Terminal.WriteLine(retry);
-        }
-    }
+    //void LevelTwo(string input) {
+    //    if (input.ToLower() == "algorithm") {
+    //        currentScreen = Screen.Win;
+    //    }
+    //    else {
+    //        Terminal.WriteLine(retry);
+    //    }
+    //}
 
     void CheckPassword(string input) {
-        //if (input == password) {
-            
-        //}
+        if (input == password) {
+            currentScreen = Screen.Win;
+            Terminal.WriteLine("Good guess!!");
+        }
+        else {
+            Terminal.WriteLine(retry);
+        }
     }
 }
