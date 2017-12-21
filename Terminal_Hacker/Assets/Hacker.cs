@@ -3,8 +3,9 @@
 public class Hacker : MonoBehaviour {
 
     // Game configuration data
-	string[] LevelOnePasswords = { "donkey", "victor", "terrain" };
-    string[] LevelTwoPasswords = { "occupation", "environment", "obsession" };
+	string[] LevelOnePasswords = { "donkey", "victor", "terrain", "zion" };
+    string[] LevelTwoPasswords = { "occupation", "environment", "obsession", "madness", "caution" };
+    string[] LevelThreePasswords = { "serendipity", "intergalactic", "trepidation", "inexplicable", "cryogenic" };
 
     // Game state
     int level;
@@ -26,6 +27,7 @@ public class Hacker : MonoBehaviour {
         Terminal.WriteLine("What would you like to hack into?");
         Terminal.WriteLine("Press 1 for the local library");
         Terminal.WriteLine("Press 2 for the police station");
+        Terminal.WriteLine("Press 3 for NASA");
         Terminal.WriteLine("Enter your selection: ");
     }
 
@@ -45,7 +47,7 @@ public class Hacker : MonoBehaviour {
     }
 
     void RunMainMenu(string input) {
-        bool isValidLevelNumber = (input == "1" || input == "2");
+        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3");
         if (isValidLevelNumber) {
             level = int.Parse(input);
             StartGame();
@@ -54,7 +56,7 @@ public class Hacker : MonoBehaviour {
 			Terminal.WriteLine("Please select a level Mr. Bond!");
 		}
         else {
-            Terminal.WriteLine("Please enter a valid input");
+            Terminal.WriteLine("Please enter a valid level");
         }
     }
 
@@ -67,6 +69,9 @@ public class Hacker : MonoBehaviour {
                 break;
             case 2:
                 password = LevelTwoPasswords[Random.Range(0, LevelTwoPasswords.Length)];
+                break;
+            case 3:
+                password = LevelThreePasswords[Random.Range(0, LevelThreePasswords.Length)];
                 break;
             default:
                 Debug.LogError("Invalid level number");
@@ -116,6 +121,9 @@ public class Hacker : MonoBehaviour {
 "
                 );
                 Terminal.WriteLine("Type \'menu\' to reset");
+                break;
+            case 3:
+                Terminal.WriteLine("god you are so sexy");
                 break;
             default:
                 Debug.LogError("Invalid level reached");
