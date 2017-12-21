@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
@@ -66,16 +63,28 @@ public class Hacker : MonoBehaviour {
         Terminal.ClearScreen();
         switch(level) {
             case 1:
-                password = LevelOnePasswords[0];
+                password = LevelOnePasswords[Random.Range(0, LevelOnePasswords.Length)];
+                print(password);
                 break;
             case 2:
-                password = LevelTwoPasswords[0];
+                password = LevelTwoPasswords[Random.Range(0, LevelTwoPasswords.Length)];
+                print(password);
                 break;
             default:
                 Debug.LogError("Invalid level number");
                 break;
         }
         Terminal.WriteLine("Please enter your guess of what the password is: ");
+    }
+
+    void CheckPassword(string input) {
+        if (input == password) {
+            currentScreen = Screen.Win;
+            Terminal.WriteLine("great guess!!");
+        }
+        else {
+            Terminal.WriteLine(retry);
+        }
     }
   //  void StartGame(string input) {
 		//currentScreen = Screen.Password;
