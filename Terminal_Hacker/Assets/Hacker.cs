@@ -64,11 +64,9 @@ public class Hacker : MonoBehaviour {
         switch(level) {
             case 1:
                 password = LevelOnePasswords[Random.Range(0, LevelOnePasswords.Length)];
-                print(password);
                 break;
             case 2:
                 password = LevelTwoPasswords[Random.Range(0, LevelTwoPasswords.Length)];
-                print(password);
                 break;
             default:
                 Debug.LogError("Invalid level number");
@@ -86,21 +84,4 @@ public class Hacker : MonoBehaviour {
             Terminal.WriteLine(retry);
         }
     }
-  //  void StartGame(string input) {
-		//currentScreen = Screen.Password;
-    //    Terminal.ClearScreen();
-    //    Terminal.WriteLine("Please enter your password: ");
-    //    CheckPassword(input);
-    //}
-
-    //void CheckPassword(string input) {
-    //    switch (input) {
-    //        case "1":
-    //            password = LevelOnePasswords[0];
-    //            break;
-    //        case "2":
-    //            password = LevelTwoPasswords[0];
-    //            break;
-    //    }
-    //}
 }
