@@ -48,17 +48,10 @@ public class Hacker : MonoBehaviour {
     }
 
     void RunMainMenu(string input) {
-        if (input == "1") {
-            level = 1;
-            password = LevelOnePasswords[0]; // TODO: Make this shit randomized.
-            print(password);
-            StartGame();
-        }
-        else if (input == "2") {
-            level = 2;
-            password = LevelTwoPasswords[0]; // TODO: Make this shit randomized
-            print(password);
-            StartGame();
+        bool isValidLevelNumber = (input == "1" || input == "2");
+        if (isValidLevelNumber) {
+            level = int.Parse(input);
+            StartGame(input);
         }
         else if (input == "007") {
 			Terminal.WriteLine("Please select a level Mr. Bond!");
@@ -68,19 +61,29 @@ public class Hacker : MonoBehaviour {
         }
     }
 
-    void StartGame() {
+    void StartGame(string input) {
 		currentScreen = Screen.Password;
-        Terminal.WriteLine("Alrighty son, you have chosen " + level);
+        Terminal.ClearScreen();
         Terminal.WriteLine("Please enter your password: ");
+        CheckPassword(input);
     }
 
     void CheckPassword(string input) {
-        if (input == password) {
-            currentScreen = Screen.Win;
-            Terminal.WriteLine("great guess!!");
+        switch (input) {
+            case "1":
+                print("level 1, checkpassword console log");
+                break;
+            case "2":
+                print("Level 2, checkpassword console log");
+                break;
         }
-        else {
-            Terminal.WriteLine(retry);
-        }
+
+        //if (input == password) {
+        //    currentScreen = Screen.Win;
+        //    Terminal.WriteLine("great guess!!");
+        //}
+        //else {
+        //    Terminal.WriteLine(retry);
+        //}
     }
 }
