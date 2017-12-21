@@ -7,14 +7,12 @@ public class Hacker : MonoBehaviour {
 
     // Game state
 	int level;
-    string passwordGuess;
+    string userGuess;
+    string password;
+	string retry = "Sorry, try again!";
 
     enum Screen { MainMenu, Password, Win };
     Screen currentScreen;
-
-    //string[] LevelOne = { "ram", "orb", "its" }; // arm, bro, sit
-    //Random random = new Random();
-    //int chosenNum = random.Next(2);
 
     // Use this for initialization
     void Start () {
@@ -37,6 +35,9 @@ public class Hacker : MonoBehaviour {
         else if (currentScreen == Screen.MainMenu) {
             RunMainMenu(input);
         }
+        else if (currentScreen == Screen.Password) {
+            CheckPassword(input);
+        }
         else if (currentScreen == Screen.Win) {
             Terminal.WriteLine("Congratulations!! You are the baddest hacker in all the land and you have received a prize of 10 Bitcoins!!");
         }
@@ -48,10 +49,12 @@ public class Hacker : MonoBehaviour {
         }
         else if (input == "1") {
             level = 1;
+            password = "donkey";
             StartGame();
         }
         else if (input == "2") {
             level = 2;
+            password = "combobulate";
             StartGame();
         }
         else {
@@ -64,33 +67,47 @@ public class Hacker : MonoBehaviour {
         Terminal.WriteLine("Alrighty son, you have chosen " + level);
 
         if (level == 1) {
-            ShowLevelOne();
+            ShowGameChallenge(1);
         }
 
         else if (level == 2) {
-            ShowLevelTwo();
+            ShowGameChallenge(2);
         }
     }
 
-    void ShowLevelOne(string input) {
-        Terminal.WriteLine("What is the anagram of \'ram?\'");
+    void ShowGameChallenge(int level) {
+        if (level == 1) {
+            Terminal.WriteLine("What is the anagram of \'ram?\'");
+            LevelOne(input);
+        }
 
+        if (level == 2) {
+            Terminal.WriteLine("Alright big boy, this one is a bit of a toughie. What is the anagram for: \'ghariltmo\'");
+            LevelTwo(input);
+        }
+    }
+
+    void LevelOne(string input) {
         if (input.ToLower() == "ram") {
             currentScreen = Screen.Win;
         }
         else {
-            Terminal.WriteLine("Sorry, try again!");
+            Terminal.WriteLine(retry);
         }
     }
 
-    void ShowLevelTwo(string input) {
-        Terminal.WriteLine("Alright big boy, this one is a bit of a toughie. What is the anagram for: \'ghariltmo\'");
-
+    void LevelTwo(string input) {
         if (input.ToLower() == "algorithm") {
             currentScreen = Screen.Win;
         }
         else {
-            Terminal.WriteLine("Sorry, try again!");
+            Terminal.WriteLine(retry);
         }
+    }
+
+    void CheckPassword(string input) {
+        //if (input == password) {
+            
+        //}
     }
 }
