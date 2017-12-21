@@ -9,13 +9,11 @@ public class Hacker : MonoBehaviour {
 	string[] LevelOnePasswords = { "donkey", "victor", "terrain" };
     string[] LevelTwoPasswords = { "occupation", "environment", "obsession" };
 
-
     // Game state
     int level;
     string userGuess;
     string password;
     string retry = "Sorry, try again!";
-
 
     enum Screen { MainMenu, Password, Win };
     Screen currentScreen;
@@ -44,13 +42,13 @@ public class Hacker : MonoBehaviour {
         else if (currentScreen == Screen.Password) {
             CheckPassword(input);
         }
+        else if (currentScreen == Screen.Win) {
+            Terminal.WriteLine("YOU ARE A WINNER");
+        }
     }
 
     void RunMainMenu(string input) {
-        if (input == "007") {
-            Terminal.WriteLine("Please select a level Mr. Bond!");
-        }
-        else if (input == "1") {
+        if (input == "1") {
             level = 1;
             password = LevelOnePasswords[0]; // TODO: Make this shit randomized.
             print(password);
@@ -62,6 +60,9 @@ public class Hacker : MonoBehaviour {
             print(password);
             StartGame();
         }
+        else if (input == "007") {
+			Terminal.WriteLine("Please select a level Mr. Bond!");
+		}
         else {
             Terminal.WriteLine("Please enter a valid input");
         }
@@ -76,7 +77,7 @@ public class Hacker : MonoBehaviour {
     void CheckPassword(string input) {
         if (input == password) {
             currentScreen = Screen.Win;
-            Terminal.WriteLine("Good guess!!");
+            Terminal.WriteLine("great guess!!");
         }
         else {
             Terminal.WriteLine(retry);
