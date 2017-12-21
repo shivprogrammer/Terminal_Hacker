@@ -51,7 +51,7 @@ public class Hacker : MonoBehaviour {
         bool isValidLevelNumber = (input == "1" || input == "2");
         if (isValidLevelNumber) {
             level = int.Parse(input);
-            StartGame(input);
+            StartGame();
         }
         else if (input == "007") {
 			Terminal.WriteLine("Please select a level Mr. Bond!");
@@ -61,29 +61,37 @@ public class Hacker : MonoBehaviour {
         }
     }
 
-    void StartGame(string input) {
-		currentScreen = Screen.Password;
+    void StartGame() {
+        currentScreen = Screen.Password;
         Terminal.ClearScreen();
-        Terminal.WriteLine("Please enter your password: ");
-        CheckPassword(input);
-    }
-
-    void CheckPassword(string input) {
-        switch (input) {
-            case "1":
-                print("level 1, checkpassword console log");
+        switch(level) {
+            case 1:
+                password = LevelOnePasswords[0];
                 break;
-            case "2":
-                print("Level 2, checkpassword console log");
+            case 2:
+                password = LevelTwoPasswords[0];
+                break;
+            default:
+                Debug.LogError("Invalid level number");
                 break;
         }
-
-        //if (input == password) {
-        //    currentScreen = Screen.Win;
-        //    Terminal.WriteLine("great guess!!");
-        //}
-        //else {
-        //    Terminal.WriteLine(retry);
-        //}
+        Terminal.WriteLine("Please enter your guess of what the password is: ");
     }
+  //  void StartGame(string input) {
+		//currentScreen = Screen.Password;
+    //    Terminal.ClearScreen();
+    //    Terminal.WriteLine("Please enter your password: ");
+    //    CheckPassword(input);
+    //}
+
+    //void CheckPassword(string input) {
+    //    switch (input) {
+    //        case "1":
+    //            password = LevelOnePasswords[0];
+    //            break;
+    //        case "2":
+    //            password = LevelTwoPasswords[0];
+    //            break;
+    //    }
+    //}
 }
