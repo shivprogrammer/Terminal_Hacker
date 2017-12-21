@@ -72,16 +72,32 @@ public class Hacker : MonoBehaviour {
                 Debug.LogError("Invalid level number");
                 break;
         }
-        Terminal.WriteLine("Please enter your guess of what the password is: ");
+        Terminal.WriteLine("Please enter your password guesss: ");
     }
 
     void CheckPassword(string input) {
         if (input == password) {
-            currentScreen = Screen.Win;
-            Terminal.WriteLine("great guess!!");
+            DisplayWinScreen();
         }
         else {
             Terminal.WriteLine(retry);
+        }
+    }
+
+    void DisplayWinScreen() {
+		currentScreen = Screen.Win;
+        Terminal.ClearScreen();
+        ShowLevelReward();
+    }
+
+    void ShowLevelReward() {
+        switch (level) {
+            case 1:
+                Terminal.WriteLine("Congrats, have a book!");
+                break;
+            case 2:
+                Terminal.WriteLine("Beast mode");
+                break;
         }
     }
 }
