@@ -7,9 +7,12 @@ public class Hacker : MonoBehaviour {
 
     // Game state
 	int level;
+    string password;
 
     enum Screen { MainMenu, Password, Win };
     Screen currentScreen;
+
+    string[] LevelOne = new string[] { "ram", "orb" }; // arm, bro
 
     // Use this for initialization
     void Start () {
@@ -31,6 +34,9 @@ public class Hacker : MonoBehaviour {
         }
         else if (currentScreen == Screen.MainMenu) {
             RunMainMenu(input);
+        }
+        else if (currentScreen == Screen.Password) {
+            PasswordScreen(password); 
         }
     }
 
@@ -54,6 +60,21 @@ public class Hacker : MonoBehaviour {
     void StartGame() {
 		currentScreen = Screen.Password;
         Terminal.WriteLine("Alrighty son, you have chosen " + level);
-        Terminal.WriteLine("Please enter your password: ");
+
+        if (level == 1) {
+            ShowLevelOne();
+        }
+
+        else if (level == 2) {
+            ShowLevelTwo();
+        }
+    }
+
+    void ShowLevelOne() {
+
+    }
+
+    void ShowLevelTwo() {
+        
     }
 }
