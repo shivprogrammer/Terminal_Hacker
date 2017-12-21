@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
+    // Game configuration data
+	string[] LevelOnePasswords = { "donkey", "victor", "terrain" };
+
+
     // Game state
-	int level;
+    int level;
     string userGuess;
     string password;
-	string retry = "Sorry, try again!";
+    string retry = "Sorry, try again!";
+
 
     enum Screen { MainMenu, Password, Win };
     Screen currentScreen;
@@ -38,9 +43,6 @@ public class Hacker : MonoBehaviour {
         else if (currentScreen == Screen.Password) {
             CheckPassword(input);
         }
-        //else if (currentScreen == Screen.Win) {
-        //    Terminal.WriteLine("Congratulations!! You are the baddest hacker in all the land and you have received a prize of 10 Bitcoins!!");
-        //}
     }
 
     void RunMainMenu(string input) {
@@ -49,7 +51,8 @@ public class Hacker : MonoBehaviour {
         }
         else if (input == "1") {
             level = 1;
-            password = "donkey";
+            password = LevelOnePasswords[0];
+            print(password);
             StartGame();
         }
         else if (input == "2") {
@@ -66,45 +69,7 @@ public class Hacker : MonoBehaviour {
 		currentScreen = Screen.Password;
         Terminal.WriteLine("Alrighty son, you have chosen " + level);
         Terminal.WriteLine("Please enter your password: ");
-
-        //if (level == 1) {
-        //    ShowGameChallenge(1);
-        //}
-
-        //else if (level == 2) {
-        //    ShowGameChallenge(2);
-        //}
     }
-
-    //void ShowGameChallenge(int level) {
-    //    if (level == 1) {
-    //        Terminal.WriteLine("What is the anagram of \'ram?\'");
-    //        LevelOne(input);
-    //    }
-
-    //    if (level == 2) {
-    //        Terminal.WriteLine("Alright big boy, this one is a bit of a toughie. What is the anagram for: \'ghariltmo\'");
-    //        LevelTwo(input);
-    //    }
-    //}
-
-    //void LevelOne(string input) {
-    //    if (input.ToLower() == "ram") {
-    //        currentScreen = Screen.Win;
-    //    }
-    //    else {
-    //        Terminal.WriteLine(retry);
-    //    }
-    //}
-
-    //void LevelTwo(string input) {
-    //    if (input.ToLower() == "algorithm") {
-    //        currentScreen = Screen.Win;
-    //    }
-    //    else {
-    //        Terminal.WriteLine(retry);
-    //    }
-    //}
 
     void CheckPassword(string input) {
         if (input == password) {
