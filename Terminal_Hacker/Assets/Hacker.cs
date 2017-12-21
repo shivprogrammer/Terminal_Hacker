@@ -72,7 +72,7 @@ public class Hacker : MonoBehaviour {
                 Debug.LogError("Invalid level number");
                 break;
         }
-        Terminal.WriteLine("Please enter your password guesss: ");
+        Terminal.WriteLine("Enter your password, hint: " + password.Anagram());
     }
 
     void CheckPassword(string input) {
@@ -102,21 +102,23 @@ public class Hacker : MonoBehaviour {
  (_____(/                
 "
                 );
+                Terminal.WriteLine("Type \'menu\' to reset");
                 break;
             case 2:
-                Terminal.WriteLine("You are officially Neo");
-                Terminal.WriteLine("Follow the white rabbit");
+                Terminal.WriteLine("You are officially Neo. Follow the white rabbit");
                 Terminal.WriteLine(@"
-           /\ /|
-          |||| |
-           \ | \
-       _ _ /  @ @
-     /    \   =>X<=
-   /|      |   /
-   \|     /__| |
-     \_____\ \__\                                   
+     \\
+      \\_
+   _-~~ .\
+ ,~   )___>
+@~    /    
+ \____)
 "
                 );
+                Terminal.WriteLine("Type \'menu\' to reset");
+                break;
+            default:
+                Debug.LogError("Invalid level reached");
                 break;
         }
     }
