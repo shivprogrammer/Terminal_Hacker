@@ -94,6 +94,14 @@ public class Hacker : MonoBehaviour {
         switch (level) {
             case 1:
                 Terminal.WriteLine("Congrats, have a book!");
+                Terminal.WriteLine(@"
+    ______
+   /     //
+  /     //
+ /____ //
+/_____(/                
+"
+                );
                 break;
             case 2:
                 Terminal.WriteLine("Beast mode");
