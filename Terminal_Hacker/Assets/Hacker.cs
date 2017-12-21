@@ -7,6 +7,7 @@ public class Hacker : MonoBehaviour {
 
     // Game configuration data
 	string[] LevelOnePasswords = { "donkey", "victor", "terrain" };
+    string[] LevelTwoPasswords = { "occupation", "environment", "obsession" };
 
 
     // Game state
@@ -51,13 +52,14 @@ public class Hacker : MonoBehaviour {
         }
         else if (input == "1") {
             level = 1;
-            password = LevelOnePasswords[0];
+            password = LevelOnePasswords[0]; // TODO: Make this shit randomized.
             print(password);
             StartGame();
         }
         else if (input == "2") {
             level = 2;
-            password = "combobulate";
+            password = LevelTwoPasswords[0]; // TODO: Make this shit randomized
+            print(password);
             StartGame();
         }
         else {
