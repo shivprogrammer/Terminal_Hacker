@@ -27,13 +27,17 @@ public class Hacker : MonoBehaviour {
             Terminal.WriteLine("Please select a level Mr. Bond!");
         }
         else if (input == "1") {
-            print(input);
+            StartGame(1);
         }
         else if (input == "2") {
-            print(input);
+            StartGame(2);
         }
         else {
             Terminal.WriteLine("Please enter a valid input"); 
         }
+    }
+
+    void StartGame(int level) {
+        Terminal.WriteLine("Alrighty son, you have chosen " + level);
     }
 }
