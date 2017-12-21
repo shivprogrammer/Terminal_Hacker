@@ -7,12 +7,14 @@ public class Hacker : MonoBehaviour {
 
     // Game state
 	int level;
-    string password;
+    string passwordGuess;
 
     enum Screen { MainMenu, Password, Win };
     Screen currentScreen;
 
-    string[] LevelOne = new string[] { "ram", "orb" }; // arm, bro
+    //string[] LevelOne = { "ram", "orb", "its" }; // arm, bro, sit
+    //Random random = new Random();
+    //int chosenNum = random.Next(2);
 
     // Use this for initialization
     void Start () {
@@ -35,8 +37,8 @@ public class Hacker : MonoBehaviour {
         else if (currentScreen == Screen.MainMenu) {
             RunMainMenu(input);
         }
-        else if (currentScreen == Screen.Password) {
-            PasswordScreen(password); 
+        else if (currentScreen == Screen.Win) {
+            Terminal.WriteLine("Congratulations!! You are the baddest hacker in all the land and you have received a prize of 10 Bitcoins!!");
         }
     }
 
@@ -70,11 +72,25 @@ public class Hacker : MonoBehaviour {
         }
     }
 
-    void ShowLevelOne() {
+    void ShowLevelOne(string input) {
+        Terminal.WriteLine("What is the anagram of \'ram?\'");
 
+        if (input.ToLower() == "ram") {
+            currentScreen = Screen.Win;
+        }
+        else {
+            Terminal.WriteLine("Sorry, try again!");
+        }
     }
 
-    void ShowLevelTwo() {
-        
+    void ShowLevelTwo(string input) {
+        Terminal.WriteLine("Alright big boy, this one is a bit of a toughie. What is the anagram for: \'ghariltmo\'");
+
+        if (input.ToLower() == "algorithm") {
+            currentScreen = Screen.Win;
+        }
+        else {
+            Terminal.WriteLine("Sorry, try again!");
+        }
     }
 }
