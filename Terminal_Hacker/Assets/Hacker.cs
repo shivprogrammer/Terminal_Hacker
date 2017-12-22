@@ -3,7 +3,7 @@
 public class Hacker : MonoBehaviour {
 
     // Game configuration data
-    const string resetMessage = "Type \'menu\' to reset";
+    const string resetMessage = "Type 'menu' to reset";
 	string[] LevelOnePasswords = { "donkey", "victor", "terrain", "zion" };
     string[] LevelTwoPasswords = { "occupation", "environment", "obsession", "madness", "caution" };
     string[] LevelThreePasswords = { "serendipity", "intergalactic", "trepidation", "inexplicable", "cryogenic" };
@@ -109,9 +109,9 @@ public class Hacker : MonoBehaviour {
  (_____(/                
 "
                 );
+                Terminal.WriteLine("Play again for a tougher challenge!");
                 break;
             case 2:
-                Terminal.WriteLine("You are officially Neo. Follow the white rabbit");
                 Terminal.WriteLine(@"
      \\
       \\_
@@ -121,6 +121,7 @@ public class Hacker : MonoBehaviour {
  \____)
 "
                 );
+                Terminal.WriteLine("Follow the White Rabbit to NASA Neo");
                 break;
             case 3:
                 Terminal.WriteLine("YOU HAVE WON A ROCKET SHIP");
