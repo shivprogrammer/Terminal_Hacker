@@ -3,7 +3,7 @@
 public class Hacker : MonoBehaviour {
 
     // Game configuration data
-    string resetMessage = "Type \'menu\' to reset";
+    const string resetMessage = "Type \'menu\' to reset";
 	string[] LevelOnePasswords = { "donkey", "victor", "terrain", "zion" };
     string[] LevelTwoPasswords = { "occupation", "environment", "obsession", "madness", "caution" };
     string[] LevelThreePasswords = { "serendipity", "intergalactic", "trepidation", "inexplicable", "cryogenic" };
@@ -123,7 +123,14 @@ public class Hacker : MonoBehaviour {
                 );
                 break;
             case 3:
-                Terminal.WriteLine("god you are so sexy");
+                Terminal.WriteLine("YOU HAVE WON A ROCKET SHIP");
+                Terminal.WriteLine(@"
+                    __
+  ,----------------(  \ 
+ ( ) - ) -  ) - ) - )  ) 
+  `----------------(__/ 
+"
+                );
                 break;
         }
     }
